@@ -76,4 +76,8 @@ public class VectorHeap<E extends Comparable<E>>{
 			pushDownRoot(0);
 		return minVal;
 	}
+	
+	public E getFirst(){
+		return data.get(0);
+	}
 }
