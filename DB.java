@@ -38,7 +38,7 @@ public class DB {
 		try (BufferedReader dr = new BufferedReader(new FileReader(archivo))) {
 			while ((linea = dr.readLine()) != null) {
 		       l++;
-		       System.out.println(l);
+		       //System.out.println(l);
 		    }
 		    dr.close();
 		}
