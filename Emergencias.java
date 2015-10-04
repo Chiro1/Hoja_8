@@ -4,11 +4,16 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 
-public class DB {
+public class Emergencias {
 	Comparator<Paciente> comparador;
 	PriorityQueue<Paciente> listaPaciente;
 	
-	public DB(String archivo){
+	/**
+	 * @param archivo
+	 * pre: Recibe archivo con los pacientes
+	 * post: Orden de los pacientes por emergencia
+	 */
+	public Emergencias(String archivo){
 		comparador = new Paciente();
 		 try {
 			listaPaciente = new PriorityQueue<Paciente>(size(archivo), comparador);
@@ -32,19 +37,28 @@ public class DB {
 		}
 	}
 	
+	/**
+	 * @param archivo
+	 * @return tamano de la cola
+	 * @throws Exception
+	 */
 	public int size(String archivo) throws Exception{
 		int l = 0;
 		String linea;
 		try (BufferedReader dr = new BufferedReader(new FileReader(archivo))) {
 			while ((linea = dr.readLine()) != null) {
 		       l++;
-		       //System.out.println(l);
 		    }
 		    dr.close();
 		}
 		return l;
 	}
 	
+	/**
+	 * @param archivo
+	 * @throws Exception
+	 * post: agrega pacientes a la cola
+	 */
 	public void generarPacientes(String archivo) throws Exception{
 		String[] info = new String[3];
 		String linea;
