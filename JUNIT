@@ -1,0 +1,49 @@
+import static org.junit.Assert.*;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+import org.junit.Before;
+import org.junit.Test;
+
+
+public class JUNIT {
+	Comparator<Paciente> comparador;
+	Paciente p1;
+	PriorityQueue<Paciente> listaPaciente;
+	@Before
+	public void start()
+	{
+		comparador = new Paciente();
+		 try {
+			listaPaciente = new PriorityQueue<Paciente>(5, comparador);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 listaPaciente.add(new Paciente("Hey","!","B"));
+		 listaPaciente.add(new Paciente("Hey","!","A"));
+		 listaPaciente.add(new Paciente("Hey","!","C"));
+	}
+
+	@Test
+	public void test() {
+		Paciente actualPaciente = listaPaciente.poll();
+		assertEquals("Hey, !, A",actualPaciente.toString());
+	}
+	@Test
+	public void test2() {
+		Paciente actualPaciente = listaPaciente.poll();
+		actualPaciente = listaPaciente.poll();
+		assertEquals("Hey, !, B",actualPaciente.toString());
+	}
+	
+	@Test
+	public void test3() {
+		Paciente actualPaciente = listaPaciente.poll();
+		actualPaciente = listaPaciente.poll();
+		actualPaciente = listaPaciente.poll();
+		assertEquals("Hey, !, C",actualPaciente.toString());
+	}
+
+}
